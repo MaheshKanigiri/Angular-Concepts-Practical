@@ -1,0 +1,176 @@
+<div class="container card bg-dark mt-3">
+  <div class="row m-1">
+
+    <div class="alert alert-primary" role="alert">
+      <h4 class="alert-heading">DATA BINDING</h4>
+      <hr>
+      <li>property binding with disabled,href,class attributes,style attributes,innerText,..</li>
+      <li> event binding with (input) and (click)</li>
+      <li>two way binding with a form and submit example
+      </li>
+    </div>
+
+    <!-- String Interpolation modal -->
+    <div class="col-md-3">
+
+      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modelId1">
+        String Interpolation
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="modelId1" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">String Interpolation</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <!-- string interpolation  -->
+            <div class="modal-body">
+
+              <h2>{{fullName}}'s Profile</h2>
+              <p><strong>Email:</strong> {{user.email}}</p>
+
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Property Binding  modal -->
+    <div class="col-md-3">
+
+      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modelId2">
+        Property Binding
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="modelId2" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Property Binding</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div class="modal-body">
+              <!-- property binding  -->
+
+              <ul>
+                <li *ngFor="let employee of employees">
+                  <h3 [style.color]="employee.color">{{ employee.name }}</h3>
+                  <p [ngClass]="{ 'bold': employee.isBold, 'italic': employee.isItalic }">{{ employee.position }}</p>
+                  <p [style.font-weight]="employee.fontWeight">{{ employee.department }}</p>
+                </li>
+              </ul>
+              <hr>
+              <h5 [innerText]="link"></h5>
+              <a [href]="link" [class.disabled]="isDisabled">{{ text }}</a>&nbsp;
+              <button [disabled]="isDisabled" class="btn btn-outline-dark">ActiveLater</button>
+              <button [disabled]="!isDisabled" class="btn btn-outline-warning">ActiveInitially</button>
+
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- event binding  -->
+    <div class="col-md-3">
+
+      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modelId3">
+        Event Binding
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="modelId3" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Event Binding</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div class="modal-body">
+              <!-- event binding (input) and (click) -->
+              <div>
+                <input type="text" (input)="onInputChange($event)">
+                <h5>Your Input is: {{target}}</h5>
+                <span>{{ name }}</span>
+                <button (click)="decrement()" class="btn btn-danger">-</button>&nbsp;&nbsp;
+                <span><b>{{ quantity }}</b></span>&nbsp;&nbsp;
+                <button (click)="increment()" class="btn btn-success">+</button>
+              </div>
+
+
+              <button class="btn btn-info" (click)="handleClick()">Add To Cart</button>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- two way binding  -->
+    <div class="col-md-3">
+      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modelId4">
+        Two Way Binding
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="modelId4" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title"> Two Way Binding</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <!-- two way binding form example  -->
+              <form (submit)="onSubmit()">
+                <div class="form-group">
+                  <label for="nameInput">Name</label>
+                  <input type="text" class="form-control" id="nameInput" [(ngModel)]="Name" name="Name">
+                </div>
+                <div class="form-group">
+                  <label for="emailInput">Email</label>
+                  <input type="email" class="form-control" id="emailInput" [(ngModel)]="Email" name="Email">
+                </div>
+                <button type="submit" class="btn btn-primary mt-2">Submit</button>
+              </form>
+
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
