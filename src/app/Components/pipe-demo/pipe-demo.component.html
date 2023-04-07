@@ -1,0 +1,38 @@
+<div class="container card mt-1 bg-warning text-dark fw-bold">
+  <h1 class="display-4">{{ title }}</h1>
+  <div class="row  p-1">
+
+    <div class="col-md-6">
+      <!-- using the built-in DatePipe -->
+      <p>The current date is {{ currentDate | date }}</p>
+
+      <!-- using the custom pipe -->
+      <p>The reverse of 'hello world' is {{ 'hello world' | custom }}</p>
+
+      <!-- using the currency pipe -->
+      <p>The price is {{ price | currency:'USD':'symbol':'1.2-2' }}</p>
+
+      <!-- using the percent pipe -->
+      <p>The percentage is {{ percent | percent:'1.2-2' }}</p>
+    </div>
+
+
+    <div class="col-md-6">
+      <!-- using the slice pipe -->
+      <p>The first 5 characters of 'angular' is {{ 'angular' | slice:0:5 }}</p>
+
+      <!-- using the uppercase pipe -->
+      <p>The uppercase of 'angular' is {{ 'angular' | uppercase }}</p>
+
+      <!-- using the lowercase pipe -->
+      <p>The lowercase of 'ANGULAR' is {{ 'ANGULAR' | lowercase }}</p>
+
+      <!-- using the decimal pipe -->
+      <p>The number is {{ number | number:'3.2-2' }}</p>
+
+      <!-- using the json pipe -->
+      <p>The JSON representation of the object is {{ object | json }}</p>
+    </div>
+
+  </div>
+</div>
