@@ -1,0 +1,138 @@
+<div class="container card bg-info">
+  <div class="row m-1">
+
+    <div class="alert alert-dark" role="alert">
+      <h4 class="alert-heading">DIRECTIVES</h4>
+      <hr>
+      <li>Structural Directive:[ngFor,ngIf,ngSwitch]</li>
+      <li>Attribute Directive:[ngStyle,ngClass]</li>
+      <li>Custom Directive</li>
+    </div>
+
+    <div class="col-md-6">
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modelId5">
+        Structural Directive
+      </button>
+
+      <!-- Structural Directive and Attribute Directive -->
+      <div class="modal fade" id="modelId5" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+        aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">[Structural/Attribute Directive]:(*ngFor)(*ngIf)</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+
+              <!-- complete-ngIf  -->
+              <div class="card p-1">
+                <h5>[*ngIf] Example-1</h5>
+                <div *ngIf="user">
+                  <h2>Welcome, {{ user.name }}!</h2>
+                  <p>Your email is {{ user.email }}.</p>
+                  <div *ngIf="user.isAdmin">
+                    <p>You have admin privileges.</p>
+                    <button (click)="deleteUser()" class="btn btn-danger">Delete User</button>
+                  </div>
+                </div>
+                <div *ngIf="!user">
+                  <h4>Please log in.</h4>
+                  <button (click)="showLoginForm()" class="btn btn-success">Log In</button>
+                </div>
+                <div class="p-1">
+                  <hr>
+                  <h5>[Example-2] Login-Logout</h5>
+                  <div *ngIf="isLoggedIn; else loggedOut">
+                    <h2>Welcome, {{ username }}!</h2>
+                    <button (click)="logout()" class="btn btn-outline-danger">Log Out</button>
+                  </div>
+
+                  <ng-template #loggedOut>
+                    <h2>Please log in.</h2>
+                    <button (click)="showLoginForm()" class="btn btn-outline-info">Log In</button>
+                  </ng-template>
+                </div>
+              </div>
+              <!-- complete ngFor  -->
+              <div class="card p-1 mt-1">
+                <h5>[*ngFor] Example</h5>
+                <ul>
+                  <li *ngFor="let item of items; index as i; even as isEven; odd as isOdd">
+                    <div [ngStyle]="{ 'background-color': isEven ? 'lightblue' : 'white' }">
+                      {{ i + 1 }}. {{ item.name }} ({{ item.age }} years old)
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modelId6">
+        Custom Directive
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="modelId6" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title"> (ngSwitch)(ngStyle)(ngClass) & Custom Directive </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+
+              <!-- ngSwitch Usage  -->
+              <div class="card p-1 mt-1">
+                <h5>[*ngSwitch] Example</h5>
+                <label for="color">Choose Your Color to be:</label>
+                <select [(ngModel)]="color">
+                  <option value="">Select a color</option>
+                  <option value="red">Red</option>
+                  <option value="blue">Blue</option>
+                  <option value="green">Green</option>
+                </select>
+                <div [ngSwitch]="color">
+                  <p *ngSwitchCase="'red'" style="background-color: red; color: white;">You selected red.</p>
+                  <p *ngSwitchCase="'blue'" style="background-color: blue; color: white;">You selected blue.</p>
+                  <p *ngSwitchCase="'green'" style="background-color: green; color: white;">You selected green.</p>
+                  <p *ngSwitchDefault>Please select a color.</p>
+                </div>
+              </div>
+              <!-- ngStyle Usage  -->
+              <div class="card p-1 mt-1">
+                <h5>Using ngStyle</h5>
+                <div [ngStyle]="{ 'background-color': bgColor, 'color': textColor }">Hello, World!</div>
+              </div>
+              <!-- Custom Directive  -->
+              <div class="card p-1 mt-1">
+                <p appHighlightDirective>Click me to highlight! This is some additional content.</p>
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
